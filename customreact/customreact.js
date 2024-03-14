@@ -1,5 +1,15 @@
-function  container(reactElement,container){
-    
+function  customRender(reactElement,container){
+    // let domElement=document.createElement(reactElement.type)
+    // domElement.innerHTML=reactElement.children
+    // domElement.setAttribute('href',reactElement.props.href)
+    // domElement.setAttribute('target',reactElement.props.target)
+    // container.appendChild(domElement)
+    let domElement=document.createElement(reactElement.type)
+    domElement.innerHTML=reactElement.children
+    for (let prop in reactElement.props){
+        domElement.setAttribute(prop,reactElement.props[prop])
+    }
+    container.appendChild(domElement)
 }
 
 const reactElement={
@@ -11,5 +21,5 @@ const reactElement={
     children: 'click me to visit google'
 
 }
-let container =document.getElementById('root')
-customRender(reactElement,container)
+let mainContainer =document.getElementById('root')
+customRender(reactElement,mainContainer)
