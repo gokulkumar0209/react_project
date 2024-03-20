@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useCallback,useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -8,16 +8,24 @@ function App() {
   const [numberAllowed,setNumberAllowed]=useState(false)
   const [symbolAllowed,setSymbolAllowed]=useState(false)
   const [password,setPassword]=useState('')
-  let pass=""
-  let str="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-  if (numberAllowed){
-    str+="0123456789"
-  }
-  if(symbolAllowed){
-    str+="!@#$%^&*"
-  }
-  
 
+  
+  const generatePassword=useCallback(()=>{
+     let pass=""
+     let str="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+     if (numberAllowed){
+       str+="0123456789"
+     }
+     if(symbolAllowed){
+       str+="!@#$%^&*"
+     }
+     for (let i=0;i<length;i++){
+      let position = Math.floor(Math.random() * str.length); // Math.random() should not take any arguments
+        pass += str[position];
+     }
+     setPassword(pass)
+  },[length,numberAllowed,symbolAllowed])
+useEffect(()=>{generatePassword()},[length,numberAllowed,symbolAllowed])
   return (
     <>
     <div>
@@ -27,16 +35,18 @@ function App() {
           <button>Copy</button>
       </div>
       <div>
-          <input type='range' min={8} max={20} value={length}/>
-          
+          <input type='range' min={8} max={20} value={length} onChange={(e)=>{setLength(e.target.value)}}/> 
+          <label htmlFor='length'>Length:{length}</label>
       </div>
       <div>
-          <input type="checkbox" />
+          <input type="checkbox" defaultChecked={numberAllowed}
+          onChange={()=>setNumberAllowed((prev)=>!prev)}/>
           <label htmlFor='number'>Numeric</label>
       </div>
       <div>
-          <input type="checkbox" />
-          <label htmlFor='special'>Symbols</label>
+      <input type="checkbox" defaultChecked={setNumberAllowed}
+          onChange={()=>setSymbolAllowed((prev)=>!prev)}/>
+          <label htmlFor='symbol'>Symbol</label>
       </div>
       </div>
     </>
