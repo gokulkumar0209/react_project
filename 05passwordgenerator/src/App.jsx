@@ -33,10 +33,10 @@ useEffect(()=>{generatePassword()},[length,numberAllowed,symbolAllowed])
   return (
     <>
     <div className='grid justify-center items-center center h-40 m-40 bg-gray-300'>
-      <h1 className=' text-black'>Password Generator</h1>
-      <div>
-          <input type='text' value={password} readOnly placeholder='Password' ref={passwordRef}></input>
-          <button className="  bg-blue-400 rounded-sm"   onClick={()=>{copyPasswordToClipBoard()}}>Copy</button>
+      <div className='flex justify-center'><h1 className=' text-black font-serif'>Password Generator</h1></div>
+      <div className='grid grid-cols-12 gap-2'>
+          <input className='col-span-9 border border-gray-300 focus:border-blue-500 px-4 py-2 rounded-md' type='text' value={password} readOnly placeholder='Password' ref={passwordRef}></input>
+          <button className=" col-span-3  bg-blue-400 rounded-md "   onClick={()=>{copyPasswordToClipBoard()}}>Copy</button>
       </div>
       <div>
           <input type='range' min={8} max={20} value={length} onChange={(e)=>{setLength(e.target.value)}}/> 
