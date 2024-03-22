@@ -7,13 +7,15 @@ import useCurrencyInfo from './hooks/useCurrencyInfo'
 
 function App() {
   const [amount, setAmount] = useState(0)
-  const [from, setFrom] = useState('USD')
-  const [to, setTo] = useState('INR')
+  const [from, setFrom] = useState('GBP')
+  const [to, setTo] = useState('EUR')
   const [convertedAmount, setConvertedAmount] = useState(0)
   const currencyInfo = useCurrencyInfo(from)
-  const options = Objects.keys(currencyInfo)
+  // console.log(currencyInfo)
+  const options = Object.keys(currencyInfo)
+  // console.log(options)
   const convert = () => {
-    setConvertedAmount(amount * currencyInfo.to)
+    setConvertedAmount(amount * currencyInfo[to])
   }
   return (
     <>
@@ -21,7 +23,7 @@ function App() {
      bg-slate-500'
         style={{ backgroundImage: `url(https://images.pexels.com/photos/754595/pexels-photo-754595.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)` }}>
         <div><h1>Currency Converter</h1></div>
-        <InputBox></InputBox>
+        <InputBox>
         <div>
           <div>
             <form onSubmit={(e) => {
@@ -33,13 +35,15 @@ function App() {
                 label="from"
                 amount={amount}
                 currencyOptions={options}
-                
+                onCurrencyChange={(currency)=>{setFrom(from)}}
+                onAmountChange={(amount)=>{setAmount(amount)}}
                 />
                 
               </div>
             </form>
           </div>
         </div>
+        </InputBox>
       </div>
     </>
   )

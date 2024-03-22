@@ -3,7 +3,8 @@ import currencies from "../components/currencies";
 function useCurrencyInfo(currency){
     const [data,setData]=useState({});
     useEffect(()=>{
-         currencies.currency.then((res)=>res.json()).then((res)=>setData(res[currency]))
+        // currencies.currency.then((res)=>res.json()).then((res)=>setData(res[currency]))
+         setData(currencies[currency])
     },[currency])
     console.log(data)
     return data;
