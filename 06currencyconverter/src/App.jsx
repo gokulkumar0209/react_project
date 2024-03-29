@@ -47,7 +47,14 @@ function App() {
             }}
             onAmountChange={(amount) => setAmount(amount)}
           ></InputBox>
-          <InputBox selectedCurrency={to}></InputBox>
+          <InputBox
+          label="to"
+          amount={convertedAmount} 
+          currencyOptions={options}
+          selectedCurrency={to}
+          onCurrencyChange={(currencX)=>{setTo(currencX)}}
+          amountDisabled
+          ></InputBox>
           <button type="submit">Convert</button>
         </form>
       </div>
