@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import  InputBox  from './components/InputBox'
+import InputBox from './components/InputBox'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -11,9 +11,9 @@ function App() {
   const [to, setTo] = useState('EUR')
   const [convertedAmount, setConvertedAmount] = useState(0)
   const currencyInfo = useCurrencyInfo(from)
-  // console.log(currencyInfo)
+  console.log(currencyInfo)
   const options = Object.keys(currencyInfo)
-  // console.log(options)
+  console.log(options)
   const convert = () => {
     setConvertedAmount(amount * currencyInfo[to])
   }
@@ -23,27 +23,22 @@ function App() {
      bg-slate-500'
         style={{ backgroundImage: `url(https://images.pexels.com/photos/754595/pexels-photo-754595.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)` }}>
         <div><h1>Currency Converter</h1></div>
-        <InputBox>
-        <div>
-          <div>
-            <form onSubmit={(e) => {
-              e.preventDefault()
-              convert()
-            }}>
-              <div>
-                <InputBox 
-                label="from"
-                amount={amount}
-                currencyOptions={options}
-                onCurrencyChange={(currency)=>{setFrom(from)}}
-                onAmountChange={(amount)=>{setAmount(amount)}}
-                />
-                
-              </div>
-            </form>
-          </div>
-        </div>
-        </InputBox>
+        <form onSubmit={(e) => {
+          console.log("Hi")
+          e.preventDefault()
+          convert()
+        }}>
+          <InputBox
+            label="from"
+            amount={amount}
+            currencyOptions={options}
+            selectedCurrency={from}
+            onCurrencyChange={(currencx) => { setFrom(currencx) }}
+            onAmountChange={(amount) => setAmount(amount)}>
+          </InputBox>
+          <InputBox selectedCurrency={to}></InputBox>
+          <button type='submit'>Convert</button>
+        </form>
       </div>
     </>
   )
