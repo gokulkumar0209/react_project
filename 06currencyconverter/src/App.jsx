@@ -7,7 +7,7 @@ import useCurrencyInfo from "./hooks/useCurrencyInfo";
 import currencies from "./components/currencies";
 
 function App() {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState();
   const [from, setFrom] = useState("USD");
   const [to, setTo] = useState("EUR");
   const [convertedAmount, setConvertedAmount] = useState(0);
