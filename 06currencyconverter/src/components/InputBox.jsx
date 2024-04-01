@@ -28,7 +28,7 @@ function InputBox({
             onAmountChange && onAmountChange(Number(e.target.value))
           }
         />
-      </div>
+      </div>c
       <div>
         <p>Currency Type</p>
 
