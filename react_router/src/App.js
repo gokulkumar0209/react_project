@@ -1,24 +1,27 @@
+import { Routes, Route } from "react-router-dom";
 
+import AllMeetupsPage from "./pages/AllMeetups";
+import FavoritesPage from "./pages/Favorites";
+import NewMeetupsPage from "./pages/NewMeetups";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<>
+			<div className=" bg-gray-500 flex justify-center">
+				<Routes>
+					<Route path="/">
+						<AllMeetupsPage></AllMeetupsPage>
+					</Route>
+					<Route path="/new-meetups">
+						<NewMeetupsPage></NewMeetupsPage>
+					</Route>
+					<Route path="/favorites">
+						<FavoritesPage></FavoritesPage>
+					</Route>
+				</Routes>
+			</div>
+		</>
+	);
 }
 
 export default App;
