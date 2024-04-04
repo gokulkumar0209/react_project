@@ -9,15 +9,15 @@ function App() {
 		<>
 			<div className=" bg-gray-500 flex justify-center">
 				<Routes>
-					<Route path="/">
-						<AllMeetupsPage></AllMeetupsPage>
-					</Route>
-					<Route path="/new-meetups">
-						<NewMeetupsPage></NewMeetupsPage>
-					</Route>
-					<Route path="/favorites">
-						<FavoritesPage></FavoritesPage>
-					</Route>
+					<Route path="/" element={<AllMeetupsPage></AllMeetupsPage>}></Route>
+					<Route
+						path="/new-meetups"
+						element={<NewMeetupsPage></NewMeetupsPage>}
+					></Route>
+					<Route
+						path="/favorites"
+						element={<FavoritesPage></FavoritesPage>}
+					></Route>
 				</Routes>
 			</div>
 		</>
