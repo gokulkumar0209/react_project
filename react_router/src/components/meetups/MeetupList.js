@@ -1,10 +1,10 @@
 import React from "react";
 import MeetupItem from "./MeetupItem";
 
-function MeetupList(props) {
+function MeetupList({meetups}) {
 	return (
-		<ul>
-			{props.meetups.map((meetup) => (
+		<ul className=" ">
+			{meetups.map((meetup) => (
 				<MeetupItem
 					key={meetup.id}
 					id={meetup.id}
