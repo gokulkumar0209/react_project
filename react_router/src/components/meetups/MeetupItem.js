@@ -1,8 +1,24 @@
 import React from "react";
-
-function MeetupItem({title,address,description,image}) {
+import { useContext } from "react";
+import FavoritesContext from "../../store/favorites-context";
+function MeetupItem({ id, title, address, description, image }) {
+	const FavoritesCtx = useContext(FavoritesContext);
+	const itemIsFavorite = FavoritesCtx.itemIsFavorite(id);
+	function toggleFavoriteStatusHandler() {
+		if (itemIsFavorite) {
+			FavoritesCtx.removeFavorite(id);
+		} else {
+			FavoritesCtx.addFavorite({
+				id: id,
+				title: title,
+				description: description,
+				image: image,
+				address: address,
+			});
+		}
+	}
 	return (
-		<li className="  mb-2" >
+		<li className="  mb-2">
 			<div className="grid grid-cols-12">
 				<div className=" w-32 col-span-2">
 					<img src={image} alt={title}></img>
@@ -14,7 +30,12 @@ function MeetupItem({title,address,description,image}) {
 						<p className="mb-2">{description}</p>
 					</div>
 					<div>
-						<button className=" bg-slate-200 p-2">Favorite</button>
+						<button
+							className=" bg-slate-200 p-2"
+							onClick={toggleFavoriteStatusHandler}
+						>
+							{itemIsFavorite ? "Remove" : "Add"}
+						</button>
 					</div>
 				</div>
 			</div>
@@ -23,9 +44,6 @@ function MeetupItem({title,address,description,image}) {
 }
 
 export default MeetupItem;
-
-
-
 
 // import React, { useState } from "react";
 
