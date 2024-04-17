@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
 
-const [gros, setGros] = useState([]);
-function grocery() {
+function Grocery() {
+	const [gros, setGros] = useState([]);
 	return (
 		<>
 			<div>grocery</div>
@@ -12,4 +12,4 @@ function grocery() {
 	);
 }
 
-export default grocery;
+export default Grocery;
