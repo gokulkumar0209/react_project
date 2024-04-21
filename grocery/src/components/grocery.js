@@ -43,7 +43,7 @@ function Grocery() {
 			<div>
 				<div className="flex justify-center">
 					<input
-						className=" bg-slate-300 border-zinc-600 mr-2 mb-2"
+						className=" bg-slate-300 border-zinc-600 mr-2 mb-2 rounded-md"
 						type="text"
 						value={inputValue}
 						onChange={handleInputChange}
@@ -51,7 +51,7 @@ function Grocery() {
 					/>
 
 					<input
-						className=" bg-slate-300 border-zinc-600  w-9 mr-2 mb-2"
+						className=" bg-slate-300 border-zinc-600  w-9 mr-2 mb-2 rounded-md p-1"
 						type="number"
 						value={quantity}
 						onChange={handleQuantity}
