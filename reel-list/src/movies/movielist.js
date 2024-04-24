@@ -1,4 +1,5 @@
 import React from "react";
+import Movieitem from "./Movieitem";
 const reels = [
 	{
 		id: 1,
@@ -85,8 +86,20 @@ const reels = [
 			"Explore the revolutionary tale of Frank and April as they challenge societal norms and redefine love amidst the quaint suburbs of Conformity Town, where every rebellion is a testament to the enduring spirit of passion and freedom.",
 	},
 ];
-function movielist() {
-	return <div>Movielist</div>;
+function Movielist() {
+	return (
+		<div>
+			{reels.map((movie) => (
+				<Movieitem
+				key={movie.id}
+				
+				title={movie.title}
+				image={movie.image}
+				description={movie.description}
+				/>
+			))}
+		</div>
+	);
 }
 
-export default movielist;
+export default Movielist;
