@@ -1,6 +1,6 @@
 import React from "react";
 
-function NewMoviesPage() {
+function NewMoviesPage({setReels}) {
 	return <div>Page</div>;
 }
 

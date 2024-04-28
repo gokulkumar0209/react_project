@@ -1,10 +1,10 @@
 import React from "react";
-import Movielist from "../movies/Movielist";
-function AllMoviesPage() {
+import Movielist from "../components/movies/Movielist";
+function AllMoviesPage({reels}) {
 	return (
 		<div>
 			<p>Hi</p>
-			<Movielist></Movielist>
+			<Movielist reels={reels}></Movielist>
 		</div>
 	);
 }
